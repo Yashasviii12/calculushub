@@ -1,7 +1,4 @@
-"""
-CalculusHub Extrema Finder
-Finds absolute minima and maxima of a mathematical function on a given interval.
-"""
+
 
 import numpy as np
 from sympy import symbols, sympify, diff, solve, lambdify, Float
@@ -9,44 +6,7 @@ from typing import Dict, Tuple, List
 
 
 def find_extrema(func_str: str, interval: Tuple[float, float]) -> Dict:
-    """
-    Find absolute minima and maxima of a function on a closed interval.
     
-    Parameters:
-    -----------
-    func_str : str
-        Mathematical function as a string (e.g., 'x**2 + 3*x - 5', 'sin(x)', 'exp(-x**2)')
-    interval : tuple of float
-        Closed interval [a, b] to search for extrema
-    
-    Returns:
-    --------
-    dict : A dictionary containing:
-        - 'min_value': float - The absolute minimum value
-        - 'min_x': float - The x-coordinate where minimum occurs
-        - 'max_value': float - The absolute maximum value
-        - 'max_x': float - The x-coordinate where maximum occurs
-        - 'critical_points': list - All critical points found in the interval
-    
-    Raises:
-    -------
-    ValueError: If the function string is invalid or interval is malformed
-    SyntaxError: If the mathematical expression cannot be parsed
-    
-    Examples:
-    ---------
-    >>> result = find_extrema('x**2 - 4*x + 3', [0, 5])
-    >>> print(result)
-    {
-        'min_value': -1.0,
-        'min_x': 2.0,
-        'max_value': 8.0,
-        'max_x': 5.0,
-        'critical_points': [2.0]
-    }
-    
-    >>> result = find_extrema('sin(x)', [0, 3.14159])
-    """
     
     # Validate input
     if not isinstance(interval, (tuple, list)) or len(interval) != 2:
@@ -132,19 +92,7 @@ def find_extrema(func_str: str, interval: Tuple[float, float]) -> Dict:
 
 
 def find_extrema_with_details(func_str: str, interval: Tuple[float, float]) -> Dict:
-    """
-    Extended version that includes all evaluation points and their values.
-    
-    Returns:
-    --------
-    dict : Includes all information from find_extrema() plus:
-        - 'endpoint_values': dict - Values at interval endpoints
-        - 'critical_point_values': dict - Values at critical points
-    
-    Examples:
-    ---------
-    >>> result = find_extrema_with_details('x**3 - 3*x', [-2, 2])
-    """
+   
     
     # Get basic extrema
     result = find_extrema(func_str, interval)
